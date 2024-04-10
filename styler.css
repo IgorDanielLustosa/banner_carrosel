@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #eaeaea;
+    overflow: hidden;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw; /* Utilizando 90% da largura da viewport */
+    height: 90vh; /* Utilizando 90% da altura da viewport */
+    max-width: 1000px; /* Limitando a largura máxima */
+    max-height: 600px; /* Limitando a altura máxima */
+    background: #f5f5f5;
+    box-shadow: 0 30px 50px #dbdbdb;
+}
+
+.container .slide .item {
+    width: 20%; /* Utilizando 20% da largura do container */
+    height: 50%; /* Utilizando 50% da altura do container */
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 20px;
+    box-shadow: 0 30px 50px #505050;
+    background-position: 50% 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.slide .item:nth-child(1),
+.slide .item:nth-child(2) {
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slide .item:nth-child(3) {
+    left: 50%;
+}
+
+.slide .item:nth-child(4) {
+    left: calc(50% + 20%);
+}
+
+.slide .item:nth-child(5) {
+    left: calc(50% + 40%);
+}
+
+/* here n = 0, 1, 2, 3,... */
+.slide .item:nth-child(n + 6) {
+    left: calc(50% + 60%);
+    opacity: 0;
+}
+
+.item .content {
+    position: absolute;
+    top: 50%;
+    left: 10%; /* Ajustando a posição para 10% da largura do container */
+    width: 30%; /* Utilizando 30% da largura do container */
+    text-align: left;
+    color: #eee;
+    transform: translate(0, -50%);
+    font-family: system-ui;
+    display: none;
+}
+
+.slide .item:nth-child(2) .content {
+    display: block;
+}
+
+.content .name {
+    font-size: 4vw; /* Utilizando tamanho de fonte responsivo */
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 forwards;
+}
+
+.content .des {
+    margin-top: 1vh; /* Utilizando 1% da altura da viewport */
+    margin-bottom: 2vh; /* Utilizando 2% da altura da viewport */
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.3s 1 forwards;
+}
+
+.content button {
+    padding: 1vh 2vw; /* Utilizando 1% da altura da viewport e 2% da largura da viewport */
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.6s 1 forwards;
+}
+
+@keyframes animate {
+    from {
+        opacity: 0;
+        transform: translate(0, 10vh); /* Utilizando 10% da altura da viewport */
+        filter: blur(3vw); /* Utilizando 3% da largura da viewport para o desfoque */
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0);
+        filter: blur(0);
+    }
+}
+
+.button {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 2vh; /* Utilizando 2% da altura da viewport */
+}
+
+.button button {
+    width: 4vw; /* Utilizando 4% da largura da viewport */
+    height: 3.5vh; /* Utilizando 3.5% da altura da viewport */
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin: 0 0.5vw; /* Utilizando 0.5% da largura da viewport */
+    border: 1px solid #000;
+    transition: 0.3s;
+}
+
+.button button:hover {
+    background: #ababab;
+    color: #fff;
+}
